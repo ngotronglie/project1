@@ -55,7 +55,7 @@ $urls = $conn->query("SELECT * FROM url")->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 
-    <div class="container mt-5">
+    <div class="container mt-5" id="refresh">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <table class="table table-striped">
@@ -95,6 +95,19 @@ $urls = $conn->query("SELECT * FROM url")->fetchAll(PDO::FETCH_ASSOC);
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#refresh").click(function() {
+                setInterval(function() {
+                    $("body").load('index.php');
+                    
+                }, 500);
+            })
+        })
+    </script>
+
+
 </body>
 
 </html>
