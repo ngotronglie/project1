@@ -23,6 +23,7 @@ $tasks = $conn->query("SELECT * FROM tasks ORDER BY id DESC")->fetchAll(PDO::FET
 <body>
     <header class='text-center'>
         <a href="add.php" class="btn btn-primary mb-4 mt-5 p-5">Thêm</a>
+        <a href="../" class="btn btn-secondary mb-4 mt-5 p-5">Trang chủ</a>
     </header>
     <main>
 
