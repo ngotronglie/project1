@@ -37,18 +37,18 @@ if (isset($_POST['submit'])) {
     <h1 class="h3 mt-5 fw-normal text-center">Please Register</h1>
 
     <div class="form-floating">
-      <input name="email" type="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
       <label for="floatingEmail">Email address</label>
+      <input name="email" type="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
     </div>
 
     <div class="form-floating">
-      <input name="username" type="text" class="form-control" id="floatingUsername" placeholder="user.name">
       <label for="floatingUsername">Username</label>
+      <input name="username" type="text" class="form-control" id="floatingUsername" placeholder="user.name">
     </div>
 
     <div class="form-floating">
-      <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
       <label for="floatingPassword">Password</label>
+      <input name="password" type="password" class="form-control mb-5" id="floatingPassword" placeholder="Password">
     </div>
 
     <button name="submit" class="w-100 btn btn-lg btn-primary" type="submit">Register</button>

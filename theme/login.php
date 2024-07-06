@@ -19,7 +19,8 @@ if (isset($_POST['submit'])) {
     if ($user && password_verify($password, $user['password'])) {
       $_SESSION['user'] = $user['username'];
       echo $_SESSION['user'];
-      echo '<h3 class="text-center bg-success p-2 mb-3">Login successful!</h3>';
+      // echo '<h3 class="text-center bg-success p-2 mb-3">Login successful!</h3>';
+      header("Location: index.php");
     } else {
       echo '<h3 class="text-center bg-danger p-2 mb-3">Login failed</h3>';
     }
@@ -32,13 +33,13 @@ if (isset($_POST['submit'])) {
     <h1 class="h3 mt-5 fw-normal text-center">Please sign in</h1>
 
     <div class="form-floating">
-      <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
       <label for="floatingInput">Email address</label>
+      <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
     </div>
 
     <div class="form-floating">
-      <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
       <label for="floatingPassword">Password</label>
+      <input name="password" type="password" class="form-control mb-5" id="floatingPassword" placeholder="Password">
     </div>
 
     <button name="submit" class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
