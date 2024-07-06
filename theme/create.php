@@ -1,16 +1,41 @@
 <?php
 require_once 'includes/header.php';
+require_once 'includes/config.php';
+
+
+// xử lí
+if (isset($_POST['submit'])) {
+    if (empty($_POST['title']) || empty($_POST['description'])) {
+        echo '<p class="alert alert-danger">Vui lòng nhập tiêu đề và mô tả</p>';
+    } else {
+        $title = $_POST['title'];
+        $description = $_POST['description'];
+
+        $img = $_FILES['img']['name'];
+        $ext = pathinfo($img, PATHINFO_EXTENSION);
+        $new_img_name = time() . '_' . uniqid() . '.' . $ext;
+        $dir = 'img/' . $new_img_name;
+
+        $username = $_SESSION['user'];
+
+        $insert = $conn->prepare("INSERT INTO photo (title, description, img, username) VALUES (:title, :description, :img, :username)");
+
+        $insert->bindParam(':title', $title);
+        $insert->bindParam(':description', $description);
+        $insert->bindParam(':img', $dir);
+        $insert->bindParam(':username', $username);
+        $insert->execute();
+
+        if (move_uploaded_file($_FILES['img']['tmp_name'], $dir)) {
+            header("Location: index.php");
+        } else {
+            echo '<p class="alert alert-danger">Không thể tải lên tệp hình ảnh.</p>';
+        }
+    }
+}
+
 
 ?>
-
-<div class="tm-hero d-flex justify-content-center align-items-center" data-parallax="scroll" data-image-src="img/hero.jpg">
-    <!--  <form class="d-flex tm-search-form">
-            <input class="form-control tm-search-input" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success tm-search-btn" type="submit">
-                <i class="fas fa-search"></i>
-            </button>
-        </form> -->
-</div>
 
 <div class="container tm-container-content tm-mt-60">
     <div class="row mb-4">
@@ -22,7 +47,7 @@ require_once 'includes/header.php';
     <div class="row mb-4">
 
 
-        <form method="" action="" enctype="multipart/form-data">
+        <form method="POST" action="create.php" enctype="multipart/form-data">
             <!-- Email input -->
             <div class="form-outline mb-4">
                 <input type="text" name="title" id="form2Example1" class="form-control" placeholder="title" />

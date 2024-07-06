@@ -1,6 +1,6 @@
 <?php
 require "includes/header.php";
-require "./config.php";
+require "includes/config.php";
 
 if (isset($_POST['submit'])) {
   $email = isset($_POST['email']) ? trim($_POST['email']) : '';

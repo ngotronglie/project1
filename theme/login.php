@@ -1,5 +1,5 @@
 <?php require "includes/header.php"; ?>
-<?php require "config.php"; ?>
+<?php require "includes/config.php"; ?>
 
 <?php
 
